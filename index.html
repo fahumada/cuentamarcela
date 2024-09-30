@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copiar al portapapeles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Cuenta de Transferencia</h1>
+    <textarea id="texto" rows="4" cols="50">Marcela Urrutia
+10.883.407-2
+Banco de Chile
+Cuenta vista
+00-011-04230-12
+completada.oct@gmail.com</textarea>
+    <br>
+    <button onclick="copiarTexto()">Copiar texto</button>
+
+    <script>
+        function copiarTexto() {
+            const textarea = document.getElementById('texto');
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // Para dispositivos m贸viles
+
+            navigator.clipboard.writeText(textarea.value)
+                .then(() => {
+                    alert('Texto copiado al portapapeles');
+                })
+                .catch(err => {
+                    console.error('Error al copiar texto: ', err);
+                });
+        }
+    </script>
+
+</body>
+</html>
